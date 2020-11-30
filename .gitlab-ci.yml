@@ -24,7 +24,7 @@ upload artifacts:
   stage: release
   rules:
     - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+#    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
     - 'curl -H "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file env ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/env/${CI_COMMIT_TAG}/env'
     - 'curl -H "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file env.exe ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/env/${CI_COMMIT_TAG}/env.exe'
@@ -33,7 +33,7 @@ release artifacts:
   stage: release
   rules:
     - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+#    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script: echo "Running release step"
   release:
     name: "Release $CI_COMMIT_TAG"
