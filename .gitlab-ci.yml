@@ -34,6 +34,7 @@ release artifacts:
   rules:
     - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  script: echo "Running release step"
   release:
     name: "Release $CI_COMMIT_TAG"
     tag_name: $CI_COMMIT_TAG
