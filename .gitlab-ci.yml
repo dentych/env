@@ -1,0 +1,27 @@
+stages:
+  - build
+  - release
+
+build for Linux amd64:
+  stage: build
+  image: golang
+  script:
+    - GOOS=linux GOARCH=amd64 go build -o env main.go
+  artifacts:
+    paths:
+      - env
+
+build for Windows amd64:
+  stage: build
+  image: golang
+  script:
+    - GOOS=windows GOARCH=amd64 go build -o env.exe main.go
+  artifacts:
+    paths:
+      - env.exe
+
+release artifacts:
+  stage: release
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  script: ls
