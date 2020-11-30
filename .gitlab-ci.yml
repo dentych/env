@@ -29,6 +29,7 @@ upload artifacts:
   rules:
     - if: $CI_COMMIT_TAG
   script:
+    - printenv
     - 'curl -H "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file env ${PACKAGE_URL}/env'
     - 'curl -H "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file env.exe ${PACKAGE_URL}/env.exe'
 
